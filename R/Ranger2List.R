@@ -7,6 +7,8 @@ Ranger2List <- function(rf_ranger)
     tree$`left daughter` <- tree$`leftChild` + 1
     tree$`right daughter` <- tree$`rightChild` + 1
     tree$`split var` <- tree$`splitvarID`
+    if (packageVersion("ranger") >= "0.12")
+      tree$`split var` <- tree$`split var` + 1
     tree$`split point` <- tree$`splitval`
     tree$`prediction` <- tree$`prediction`
     tree <- tree[,c("left daughter","right daughter","split var","split point","status")]
